@@ -8,7 +8,7 @@ export const business = {
     `https://wa.me/14349815267?text=${encodeURIComponent(text)}`,
   address: '16 Pharsalia Rd, Massies Mill, VA 22967',
   mapsEmbed:
-    'https://www.google.com/maps?q=16+Pharsalia+Rd,+Massies+Mill,+VA+22967&output=embed',
-  mapsLink: 'https://www.google.com/maps/search/?api=1&query=16+Pharsalia+Rd,+Massies+Mill,+VA+22967',
+    "https://www.google.com/maps?q=Lucy%E2%80%99s+Party+Rental+LLC,+16+Pharsalia+Rd,+Massies+Mill,+VA+22967&output=embed",
+  mapsLink: 'https://maps.app.goo.gl/VvLpsWwdJRKArAuv8',
   hours: 'Lunes a Domingo · 7:00 am – 7:30 pm',
 }

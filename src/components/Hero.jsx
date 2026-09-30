@@ -1,6 +1,10 @@
+import { useState } from 'react'
 import { business } from '../data/business'
+import VideoModal from './VideoModal'
 
 export default function Hero() {
+  const [showVideo, setShowVideo] = useState(false)
+
   return (
     <section id="inicio" className="hero">
       <div className="hero-decor" aria-hidden="true">
@@ -36,6 +40,19 @@ export default function Hero() {
             📞 {business.phone}
           </a>
         </div>
+        <button
+          className="hero-video"
+          onClick={() => setShowVideo(true)}
+          aria-label="Ver video de presentación"
+        >
+          <span className="hero-video-play" aria-hidden="true">
+            ▶
+          </span>
+          <span className="hero-video-text">
+            <strong>Video de presentación</strong>
+            <span>Mira toda la diversión en acción</span>
+          </span>
+        </button>
         <div className="hero-info">
           <div>
             🕐 <strong>Horario</strong>
@@ -51,6 +68,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      <VideoModal open={showVideo} onClose={() => setShowVideo(false)} />
     </section>
   )
 }
