@@ -1,6 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+const videos = ['/video/presentacion.mp4', '/video/presentacion-2.mp4']
 
 export default function VideoModal({ open, onClose }) {
+  const [current, setCurrent] = useState(0)
+  const videoRef = useRef(null)
+
   useEffect(() => {
     if (!open) return
     const onKey = (e) => {
@@ -14,7 +19,23 @@ export default function VideoModal({ open, onClose }) {
     }
   }, [open, onClose])
 
+  // Cada vez que se abre el modal, empieza desde el primer video
+  useEffect(() => {
+    if (open) setCurrent(0)
+  }, [open])
+
+  // Reproducción: silenciado (política de autoplay de los navegadores)
+  useEffect(() => {
+    if (!open) return
+    const video = videoRef.current
+    if (!video) return
+    video.muted = true
+    video.play().catch(() => {})
+  }, [open, current])
+
   if (!open) return null
+
+  const next = () => setCurrent((c) => (c + 1) % videos.length)
 
   return (
     <div
@@ -28,7 +49,24 @@ export default function VideoModal({ open, onClose }) {
         <button className="modal-close" onClick={onClose} aria-label="Cerrar video">
           ✕
         </button>
-        <video src="/video/presentacion.mp4" controls autoPlay playsInline />
+        <video
+          key={current}
+          ref={videoRef}
+          src={videos[current]}
+          onEnded={next}
+          controls
+          autoPlay
+          muted
+          playsInline
+        />
+        <div className="modal-caption">
+          <span className="modal-count">
+            Video {current + 1} de {videos.length}
+          </span>
+          <span className="modal-hint">
+            El video inicia silenciado · activa el sonido 🔊 en el reproductor
+          </span>
+        </div>
       </div>
     </div>
   )

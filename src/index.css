@@ -443,6 +443,25 @@ section[id] {
   background: rgba(255, 255, 255, 0.3);
 }
 
+.modal-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.88rem;
+}
+
+.modal-count {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.22rem 0.85rem;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
 @media (max-width: 520px) {
   .modal-close {
     top: -50px;

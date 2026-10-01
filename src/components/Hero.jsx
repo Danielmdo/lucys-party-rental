@@ -1,9 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { business } from '../data/business'
 import VideoModal from './VideoModal'
 
 export default function Hero() {
   const [showVideo, setShowVideo] = useState(false)
+
+  // El video de presentación se abre automáticamente al cargar la web
+  useEffect(() => {
+    setShowVideo(true)
+  }, [])
 
   return (
     <section id="inicio" className="hero">
